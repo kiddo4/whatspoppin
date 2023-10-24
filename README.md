@@ -1,6 +1,5 @@
 # whatspoppin
-
-A new Flutter project.
+This is an open source flutter project (app) that allows anonymous users post what's on thier mind and what is popping an open space free for all. Feel free to contribute your contributions means alot
 
 ## Getting Started
 
@@ -28,3 +27,5 @@ the `lib/src/localization` directory.
 To support additional languages, please visit the tutorial on
 [Internationalizing Flutter
 apps](https://flutter.dev/docs/development/accessibility-and-localization/internationalization)
+
+

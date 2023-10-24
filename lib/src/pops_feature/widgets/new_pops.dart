@@ -49,13 +49,25 @@ class _NewPopsState extends State<NewPops> {
                   elevation: 6,
                   color: Colors.lightBlue,
                   height: 40,
+                  
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(50.0),
                   ),
-                  child: const Text(
-                    'Post',
-                    style: TextStyle(
-                      color: Colors.white,
+                  child: const Padding(
+                    padding: EdgeInsets.all(15),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Pop',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold
+                          ),
+                        ),
+                        Icon(Icons.tips_and_updates_rounded, size: 35,)
+                      ],
                     ),
                   ),
                 )

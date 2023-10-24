@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatspoppin/src/controllers/pop_controller.dart';
 import '../model/pops_item.dart';
 /// Displays detailed information about a PopsItem.
 class PopsItemDetailsView extends StatelessWidget {
@@ -8,13 +9,14 @@ class PopsItemDetailsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final popId = ModalRoute.of(context)!.settings.arguments as String;
+    var pops =  PopsItemController.popList;
+    final popId = ModalRoute.of(context)!.settings.arguments;
     final selectedPop = pops.firstWhere((pop) => pop.id == popId);
 
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Item Details',
+          'Pop Details',
           style: TextStyle(
             fontSize: 20,
             color: Colors.black,

@@ -4,7 +4,7 @@ import 'package:whatspoppin/src/assets.dart';
 import '../views/pops_item_details_view.dart';
 
 class Pops extends StatefulWidget {
-  final String id;
+  final int id;
   final String text;
 
   const Pops({
@@ -65,7 +65,7 @@ class _PopsState extends State<Pops> {
                   ),
                    child: ListTile(
                     leading: const CircleAvatar(
-                      foregroundImage: AssetImage(Assets.avt1)
+                      foregroundImage: AssetImage(Assets.avt2)
                     ),
                     title: const Text(
                       'Pop by Anonymous',

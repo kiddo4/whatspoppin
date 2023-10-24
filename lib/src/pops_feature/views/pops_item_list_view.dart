@@ -3,9 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:whatspoppin/src/pops_feature/widgets/new_pops.dart';
 import 'package:whatspoppin/src/pops_feature/widgets/pops_widget.dart';
-
+import 'package:get/get.dart';
 import 'package:whatspoppin/src/settings/settings_view.dart';
 import '../model/pops_item.dart';
+import 'package:whatspoppin/src/controllers/pop_controller.dart';
 
 
 /// Displays a list of PopsItems.
@@ -22,16 +23,17 @@ class PopsItemListView extends StatefulWidget {
 }
 
 class _PopsItemListViewState extends State<PopsItemListView> {
-  void _addNewPops(String text) {
-    final newPop = PopsItem(
-      DateTime.now().toString(),
-      text
-      );
+  // final PopsItemController popsItemController = Get.put(PopsItemController());
+  // void _addNewPops(String text) {
+  //   final newPop = PopItem(
+  //     // DateTime.now(),
+  //     text
+  //     );
 
-      setState(() {
-        pops.add(newPop);
-      });
-  }
+  //     setState(() {
+  //       pops.add(newPop);
+  //     });
+  // }
 
   void _startAddNewPops(BuildContext ctx) {
     showModalBottomSheet(
@@ -40,7 +42,7 @@ class _PopsItemListViewState extends State<PopsItemListView> {
       return GestureDetector(
         onTap: () {},
         behavior: HitTestBehavior.opaque,
-        child: NewPops(_addNewPops),
+        // child: NewPops(_addNewPops),
       );
     },);
   }
@@ -84,17 +86,18 @@ class _PopsItemListViewState extends State<PopsItemListView> {
       body: Column(
         children: [
           Flexible(
-            child: ListView.builder(
+            child: Obx( () => ListView.builder(
               // Providing a restorationId allows the ListView to restore the
               // scroll position when a user leaves and returns to the app after it
               // has been killed while running in the background.
               restorationId: 'PopsItemListView',
-              itemCount: pops.length,
+              itemCount: PopsItemController.popList.length,
               itemBuilder: (BuildContext context, int index) {
-                final item = pops[index];
+                final item = PopsItemController.popList[index];
           
                 return Pops(id: item.id, text: item.text);
               },
+            )
             ),
           ),
         ],
