@@ -9,7 +9,7 @@ class PopsItemDetailsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var pops =  PopsItemController.popList;
+    var pops =  PopController.popList;
     final popId = ModalRoute.of(context)!.settings.arguments;
     final selectedPop = pops.firstWhere((pop) => pop.id == popId);
 

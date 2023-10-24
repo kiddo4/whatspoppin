@@ -4,9 +4,9 @@
 
 import 'dart:convert';
 
-List<PopItem> popItemFromJson(String str) => List<PopItem>.from(json.decode(str));
+PopItem popItemFromJson(String str) => PopItem.fromJson(json.decode(str));
 
-String popItemToJson(List<PopItem> data) => json.encode(List<dynamic>.from(data.map((e) => e.toJson())));
+String popItemToJson(PopItem data) => json.encode(data.toJson());
 
 class PopItem {
     int id;

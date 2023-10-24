@@ -86,18 +86,25 @@ class _PopsItemListViewState extends State<PopsItemListView> {
       body: Column(
         children: [
           Flexible(
-            child: Obx( () => ListView.builder(
+            child: Obx( () { 
+              // if (PopController.isLoading.value){
+              //   return const Center(child: CircularProgressIndicator(color: Colors.blue,));
+              // }else{
+                 return ListView.builder(
               // Providing a restorationId allows the ListView to restore the
               // scroll position when a user leaves and returns to the app after it
               // has been killed while running in the background.
               restorationId: 'PopsItemListView',
-              itemCount: PopsItemController.popList.length,
+              itemCount: PopController.popList.length,
               itemBuilder: (BuildContext context, int index) {
-                final item = PopsItemController.popList[index];
+                final item = PopController.popList[index];
           
                 return Pops(id: item.id, text: item.text);
               },
-            )
+            );
+              // }
+             
+            }
             ),
           ),
         ],

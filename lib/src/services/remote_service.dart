@@ -1,18 +1,30 @@
-import 'package:http/http.dart' as http;
+import 'dart:convert';
+
 import 'package:whatspoppin/src/pops_feature/model/pops_item.dart';
+import 'package:http/http.dart' as http;
 
-class RemoteService{
+class RemoteServer {
   static var client = http.Client();
+  static String baseUrl = "http://127.0.0.1:8000/pops";
+  static Map<String, String> headers = {"origin": "http://localhost:8401/"};
+  static Future<List<PopItem>> fetchData() async {
+    var response = await client.get(Uri.parse(baseUrl));
+    // var product = [];
 
-  static Future<List<PopItem>> fetchPops() async {
-    var response = await client.get(Uri.parse('http://localhost:8000/pops/'));
-
-    if(response.statusCode == 200) {
-      var jsonString = response.body;
-      return popItemFromJson(jsonString);
+    if (response.statusCode == 200) {
+      var jsonResponse = response.body;
+      print(response.body);
+      final items = jsonDecode(response.body);
+      List<PopItem> product = items.map<PopItem>((json) {
+        return PopItem.fromJson(json);
+      }).toList();
+      // List<Product> product = items.forEach((item) {
+      //   return Product.fromJson(item);
+      // });
+      return product;
     } else {
-      // show erro message
-      return Future.value(null);
+      print("Failed to load data");
+      return [];
     }
   }
 }
